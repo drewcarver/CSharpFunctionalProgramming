@@ -25,6 +25,7 @@ namespace Maybe
             : Maybe<TResult>.Nothing;
         }
 
+        /// Monad
         public static Maybe<TResult> Select<TSource, TResult>(this Maybe<TSource> maybe, Func<TSource, Maybe<TResult>> arrow)
         {
             return maybe.Value != null
@@ -32,6 +33,7 @@ namespace Maybe
             : Maybe<TResult>.Nothing;
         }
 
+        /// Required for Linq from expression support
         public static Maybe<TProjection> SelectMany<TSource, TResult, TProjection>(this Maybe<TSource> maybe, 
         Func<TSource, Maybe<TResult>> arrow,
         Func<TSource, TResult, TProjection> projection)
